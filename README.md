@@ -5,9 +5,9 @@ A new Flutter project.
 ## Getting Started
 
 ---
-Nama    :Rizal Pringgandani
-NIM     :312110151
-Kelas   :TI.21.A2
+Nama    :Maftuhin Amanulloh
+NIM     :312110610
+Kelas   :TI.21.A3
 ---
 
 ### Tampilan Halaman list quote
@@ -22,7 +22,7 @@ import 'dart:convert';
 
 class ListQuote extends StatelessWidget {
   final String apiUrl =
-      "https://indonesia-public-static-api.vercel.app/api/heroes";
+      "https://indonesia-public-static-api.vercel.app/api/volcanoes";
 
   const ListQuote({super.key});
 
@@ -35,7 +35,7 @@ class ListQuote extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Nama-nama Pahlawan'),
+        title: const Text('Gunung Berapi Di Indonesia'),
       ),
       body: FutureBuilder<List<dynamic>>(
         future: _fetchListQuotes(),
@@ -48,39 +48,32 @@ class ListQuote extends StatelessWidget {
                 var listTile = ListTile(
                   
                   title: Text(
-                    snapshot.data[index]['name'].toString(),
+                    snapshot.data[index]['nama'].toString(),
                     textAlign: TextAlign.justify,
                   ),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "lahir: " + snapshot.data[index]['birth_year'].toString(),
+                        "Bentuk: " + snapshot.data[index]['bentuk'],
                         style: const TextStyle(fontStyle: FontStyle.italic),
                       ),
                       Text(
-                        "wafat: " + snapshot.data[index]['death_year'].toString(),
+                        "Tinggi: " + snapshot.data[index]['tinggi_meter'].toString(),
                         style: const TextStyle(fontStyle: FontStyle.italic),
                       ),
                       Text(
-                        "deskripsi: " + snapshot.data[index]['description'],
+                        "Estimasi Letusan Terakhir: " + snapshot.data[index]['estimasi_letusan_terakhir'].toString(),
                         style: const TextStyle(fontStyle: FontStyle.italic),
                       ),
                       Text(
-                        "tahun kenaikan: " + snapshot.data[index]['ascension_year'].toString(),
+                        "Geolokasi: " + snapshot.data[index]['geolokasi'].toString(),
                         style: const TextStyle(fontStyle: FontStyle.italic),
                       ),
                      
                     ],
                   ),
-                  // trailing: SizedBox(
-                  //   width: 60,
-                  //   child: Row(
-                  //     children: [
-                  //       Text(snapshot.data[index]['id'].toString()),
-                  //     ],
-                  //   ),
-                  // ),
+                 
                 );
                 return Card(
                   child: listTile,
@@ -141,7 +134,7 @@ class RandomQuote extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Nama-nama Pahlawan Nasional'),
+        title: const Text('Nama-nama Gunung Berapi'),
       ),
       body: FutureBuilder<dynamic>(
         future: _fetchRandomQuotes(),
@@ -154,7 +147,7 @@ class RandomQuote extends StatelessWidget {
                   child: Column(
                     children: [
                       Image.asset(
-                        'background/pahlawan.jpg',
+                        'background/gunung.png',
                         width: 400,
                         height: 280,
                         fit: BoxFit.cover,
@@ -208,7 +201,6 @@ class RandomQuote extends StatelessWidget {
     );
   }
 }
-
 
 ```
 
